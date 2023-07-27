@@ -1,0 +1,8 @@
+.img__container {
+    height: 25vh;
+    display: flex;
+}
+
+.img__container img {
+    width: 100%;
+}

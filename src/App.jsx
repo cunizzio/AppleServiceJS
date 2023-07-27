@@ -1,26 +1,28 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+
+import { Route, RouterProvider, createBrowserRouter, createRoutesFromElements } from 'react-router-dom'
 import './App.css'
-import { NavBar } from './components/NavBar'
-import { CartWidget } from './components/NavBar'
-import { Agradecimiento } from './components/ItemListContainer'
+import { NavBar } from './components/NavBar/NavBar'
+import { Home } from './Paginas/Home'
+import { Detail } from './Paginas/Detalle'
+import { Categoria } from './Paginas/Categorias'
+
+const routes = createBrowserRouter(
+  createRoutesFromElements (
+    <Route element={<NavBar/>}>
+      <Route path="/" element={<Home/>} />
+      <Route path="/category/:id" element={<Categoria/>}/>
+      <Route path="/Item/:id" element={<Detail/>}/>
+    </Route>
+  )
+);
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
       <div>
-        <NavBar>
-          <CartWidget />
-        </NavBar>
-      </div>
-
-      <div>
-        < Agradecimiento greeting="Muchas gracias por tu compra!!!" />
-      </div>
-      
+        <RouterProvider router={routes} />
+      </div>      
     </>
   )
 }
